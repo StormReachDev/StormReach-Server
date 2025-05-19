@@ -1,6 +1,7 @@
 // Imports:
 import http from 'http'
 import app from './app.js'
+import initializeDatabase from './config/database.js'
 
 // Instantiation:
 const server = http.createServer(app)
@@ -14,7 +15,8 @@ process.on('uncaughtException', (err) => {
   process.exit(1)
 })
 
-// TODO: Connect to database here.
+// Database connection:
+initializeDatabase.connect()
 
 // Server listening:
 const initializeServer = server.listen(PORT, () => {

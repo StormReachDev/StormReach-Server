@@ -10,7 +10,7 @@ const app = express()
 // Configuration:
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config({
-    path: '/config/config.env',
+    path: './config/config.env',
   })
 }
 
