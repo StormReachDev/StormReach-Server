@@ -1,7 +1,7 @@
 // Imports:
 import express from 'express'
 import dotenv from 'dotenv'
-import initializeAppModules from './start/index.js'
+import morgan from 'morgan'
 
 // Instantiation:
 const app = express()
@@ -13,7 +13,9 @@ if (process.env.NODE_ENV !== 'PRODUCTION') {
   })
 }
 
-// Initialize app modules:
-initializeAppModules(app)
+// Middlewares:
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(morgan('dev'))
 
 export default app

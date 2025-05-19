@@ -4,7 +4,7 @@ import app from './app.js'
 
 // Instantiation:
 const server = http.createServer(app)
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 const ENV = process.env.NODE_ENV || 'development'
 
 // Handling uncaught exceptions:

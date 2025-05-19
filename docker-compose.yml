@@ -1,0 +1,13 @@
+services:
+  stormy-server:
+    container_name: stormy-container
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/stormy-server
+      - /stormy-server/node_modules
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - ./config/config.env

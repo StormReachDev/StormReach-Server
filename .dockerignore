@@ -1,0 +1,20 @@
+# Node modules:
+node_modules
+
+# Environment files:
+.env
+
+# Logs:
+npm-debug.log*
+
+# Docker files (optional if you're not copying them into the image):
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# OS-specific:
+.DS_Store
+Thumbs.db
+
+# Editor & IDE settings:
+.vscode
