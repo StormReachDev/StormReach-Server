@@ -1,0 +1,13 @@
+# Dependencies:
+node_modules
+
+# Misc:
+config/config.env
+.DS_Store
+
+# Logs:
+package-lock.json
+
+# Version managers and configs:
+.npmrc
+.nvmrc

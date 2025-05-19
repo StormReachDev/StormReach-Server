@@ -1,0 +1,15 @@
+# Dependencies:
+/node_modules
+
+# Testing:
+/coverage
+
+# Production:
+/build
+
+# Misc:
+/config/config.env
+.DS_Store
+
+# Logs:
+package-lock.json
