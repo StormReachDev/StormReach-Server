@@ -2,8 +2,6 @@
 import mongoose from 'mongoose'
 import ErrorHandler from '../utils/errorHandler.js'
 
-console.log(process.env.DATABASE_URL)
-
 class Database {
   constructor() {
     if (Database.instance) {
