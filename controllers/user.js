@@ -1,16 +1,13 @@
 import crypto from 'crypto'
+import getResetPasswordEmail from '../constants/templates/email/index.js'
 import asyncWrapper from '../middlewares/asyncWrapper.js'
 import User from '../models/userModel.js'
 import emailService from '../utils/emailService.js'
 import ErrorHandler from '../utils/errorHandler.js'
 import setAuthToken from '../utils/setAuthToken.js'
 
-export const createUser = asyncWrapper(async function (req, res, next) {
+export const createUser = asyncWrapper(async function (req, res, _next) {
   const { name, email, password, phone, timeZone, role } = req.body
-
-  if (req.user.role === 'salesAgent' && role !== 'roofer') {
-    return next(new ErrorHandler('You are not authorized to create a user with this role.', 403))
-  }
 
   await User.create({
     name,
@@ -88,9 +85,8 @@ export const forgotPassword = asyncWrapper(async function (req, res, next) {
   try {
     await emailService({
       email: user.email,
-      subject: 'Password Recovery',
-      name: user.name,
-      resetPasswordUrl,
+      subject: 'Password Recovery - StormReach',
+      func: getResetPasswordEmail(user.name, resetPasswordUrl),
     })
 
     return res.status(200).json({

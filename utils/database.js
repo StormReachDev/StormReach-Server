@@ -1,6 +1,6 @@
 // Imports:
 import mongoose from 'mongoose'
-import ErrorHandler from '../utils/errorHandler.js'
+import ErrorHandler from './errorHandler.js'
 
 class Database {
   constructor() {
