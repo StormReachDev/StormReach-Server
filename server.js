@@ -1,7 +1,7 @@
 // Imports:
 import http from 'http'
 import app from './app.js'
-import initializeDatabase from './config/database.js'
+import initializeDatabase from './utils/database.js'
 
 // Instantiation:
 const server = http.createServer(app)

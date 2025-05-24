@@ -60,7 +60,7 @@ const userModel = new mongoose.Schema(
 
     role: {
       type: String,
-      requred: [true, modelConstants.user.error.role.required],
+      required: [true, modelConstants.user.error.role.required],
       trim: true,
       enum: modelConstants.user.error.role.enum,
     },

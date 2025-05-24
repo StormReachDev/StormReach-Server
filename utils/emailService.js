@@ -1,6 +1,5 @@
 // Imports:
 import nodeMailer from 'nodemailer'
-import getResetPasswordEmail from '../constants/templates/email/index.js'
 
 async function emailService(options) {
   const transporter = nodeMailer.createTransport({
@@ -16,7 +15,7 @@ async function emailService(options) {
     from: process.env.SMPT_MAIL,
     to: options.email,
     subject: options.subject,
-    html: getResetPasswordEmail(options.name, options.resetPasswordUrl),
+    html: options.func,
   }
 
   await transporter.sendMail(mailOptions)
