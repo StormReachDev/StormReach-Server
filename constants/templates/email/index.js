@@ -22,7 +22,7 @@ function getResetPasswordEmail(userName, resetLink) {
       </div>
     </body>
   </html>
-  `
+  `;
 }
 
 function getNewPasswordEmail(userName, email, password) {
@@ -59,7 +59,7 @@ function getNewPasswordEmail(userName, email, password) {
       </div>
     </body>
   </html>
-  `
+  `;
 }
 
 function getPlanPurchaseEmail(userName, planName, amount, credits) {
@@ -97,8 +97,8 @@ function getPlanPurchaseEmail(userName, planName, amount, credits) {
       </div>
     </body>
   </html>
-  `
+  `;
 }
 
-export default getResetPasswordEmail
-export { getNewPasswordEmail, getPlanPurchaseEmail }
+export default getResetPasswordEmail;
+export { getNewPasswordEmail, getPlanPurchaseEmail };

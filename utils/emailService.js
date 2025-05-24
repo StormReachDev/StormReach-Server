@@ -1,5 +1,5 @@
 // Imports:
-import nodeMailer from 'nodemailer'
+import nodeMailer from 'nodemailer';
 
 async function emailService(options) {
   const transporter = nodeMailer.createTransport({
@@ -10,15 +10,15 @@ async function emailService(options) {
       user: process.env.SMPT_MAIL,
       pass: process.env.SMPT_PASSWORD,
     },
-  })
+  });
   const mailOptions = {
     from: process.env.SMPT_MAIL,
     to: options.email,
     subject: options.subject,
     html: options.func,
-  }
+  };
 
-  await transporter.sendMail(mailOptions)
+  await transporter.sendMail(mailOptions);
 }
 
-export default emailService
+export default emailService;

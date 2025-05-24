@@ -1,6 +1,6 @@
 // Imports:
-import mongoose from 'mongoose'
-import { modelConstants } from '../constants/models/index.js'
+import mongoose from 'mongoose';
+import { modelConstants } from '../constants/models/index.js';
 
 // TODO: LATER ON LINK THIS WITH DISPUTES AS WELL. THE REASON WHY PLAN IS OPTIONAL IS BECAUSE DISPUTES CAN HAPPEN AS WELL.
 const transactionModel = new mongoose.Schema(
@@ -37,14 +37,20 @@ const transactionModel = new mongoose.Schema(
     transactionType: {
       type: String,
       enum: modelConstants.transaction.error.transactionType.enum,
-      required: [true, modelConstants.transaction.error.transactionType.required],
+      required: [
+        true,
+        modelConstants.transaction.error.transactionType.required,
+      ],
       trim: true,
     },
 
     transactionStatus: {
       type: String,
       enum: modelConstants.transaction.error.transactionStatus.enum,
-      required: [true, modelConstants.transaction.error.transactionStatus.required],
+      required: [
+        true,
+        modelConstants.transaction.error.transactionStatus.required,
+      ],
       trim: true,
     },
 
@@ -56,7 +62,7 @@ const transactionModel = new mongoose.Schema(
   {
     timestamps: true,
   },
-)
+);
 
-const Transaction = mongoose.model('Transaction', transactionModel)
-export default Transaction
+const Transaction = mongoose.model('Transaction', transactionModel);
+export default Transaction;

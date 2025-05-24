@@ -7,7 +7,11 @@ export default {
     'footer-max-line-length': [2, 'always', 100],
     'header-max-length': [2, 'always', 100],
     'scope-case': [2, 'always', 'lower-case'],
-    'subject-case': [2, 'never', ['sentence-case', 'start-case', 'pascal-case', 'upper-case']],
+    'subject-case': [
+      2,
+      'never',
+      ['sentence-case', 'start-case', 'pascal-case', 'upper-case'],
+    ],
     'subject-empty': [2, 'never'],
     'subject-full-stop': [2, 'never', '.'],
     'type-case': [2, 'always', 'lower-case'],
@@ -33,7 +37,7 @@ export default {
       ],
     ],
   },
-}
+};
 
 // build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm).
 // ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs).

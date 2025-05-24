@@ -23,4 +23,4 @@ export const plans = {
     currency: 'USD',
     appointmentCredits: 1,
   },
-}
+};

@@ -1,8 +1,8 @@
 // Imports:
-import globals from 'globals'
-import pluginJS from '@eslint/js'
-import prettierConfig from 'eslint-config-prettier'
-import prettierPlugin from 'eslint-plugin-prettier'
+import globals from 'globals';
+import pluginJS from '@eslint/js';
+import prettierConfig from 'eslint-config-prettier';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
   {
@@ -25,4 +25,4 @@ export default [
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
   },
-]
+];

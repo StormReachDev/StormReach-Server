@@ -1,6 +1,6 @@
 // Imports:
-import mongoose from 'mongoose'
-import { modelConstants } from '../constants/models/index.js'
+import mongoose from 'mongoose';
+import { modelConstants } from '../constants/models/index.js';
 
 const paymentModel = new mongoose.Schema(
   {
@@ -12,13 +12,19 @@ const paymentModel = new mongoose.Schema(
 
     stripePaymentMethodId: {
       type: String,
-      required: [true, modelConstants.payment.error.stripePaymentMethodId.required],
+      required: [
+        true,
+        modelConstants.payment.error.stripePaymentMethodId.required,
+      ],
       trim: true,
     },
 
     stripePaymentIntentId: {
       type: String,
-      required: [true, modelConstants.payment.error.stripePaymentIntentId.required],
+      required: [
+        true,
+        modelConstants.payment.error.stripePaymentIntentId.required,
+      ],
       trim: true,
     },
 
@@ -44,7 +50,7 @@ const paymentModel = new mongoose.Schema(
   {
     timestamps: true,
   },
-)
+);
 
-const Payment = mongoose.model('Payment', paymentModel)
-export default Payment
+const Payment = mongoose.model('Payment', paymentModel);
+export default Payment;

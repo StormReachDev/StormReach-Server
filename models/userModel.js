@@ -1,11 +1,11 @@
 // Imports:
-import bcrypt from 'bcryptjs'
-import crypto from 'crypto'
-import jwt from 'jsonwebtoken'
-import moment from 'moment-timezone'
-import mongoose from 'mongoose'
-import validator from 'validator'
-import { modelConstants } from '../constants/models/index.js'
+import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+import moment from 'moment-timezone';
+import mongoose from 'mongoose';
+import validator from 'validator';
+import { modelConstants } from '../constants/models/index.js';
 
 const userModel = new mongoose.Schema(
   {
@@ -30,7 +30,10 @@ const userModel = new mongoose.Schema(
       required: [true, modelConstants.user.error.password.required],
       minLength: [8, modelConstants.user.error.password.minLength],
       select: false,
-      validate: [validator.isStrongPassword, modelConstants.user.error.password.weak],
+      validate: [
+        validator.isStrongPassword,
+        modelConstants.user.error.password.weak,
+      ],
       trim: true,
     },
 
@@ -40,7 +43,7 @@ const userModel = new mongoose.Schema(
       unique: true,
       validate: {
         validator: function (v) {
-          return validator.isMobilePhone(v, 'any', { strictMode: true })
+          return validator.isMobilePhone(v, 'any', { strictMode: true });
         },
 
         message: modelConstants.user.error.phone.invalid,
@@ -76,34 +79,37 @@ const userModel = new mongoose.Schema(
   {
     timestamps: true,
   },
-)
+);
 
 userModel.pre('save', async function (next) {
   if (!this.isModified('password')) {
-    next()
+    next();
   }
 
-  this.password = await bcrypt.hash(this.password, 10)
-})
+  this.password = await bcrypt.hash(this.password, 10);
+});
 
 userModel.methods.generateJsonWebToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
-  })
-}
+  });
+};
 
 userModel.methods.comparePassword = async function (inputPassword) {
-  return await bcrypt.compare(inputPassword, this.password)
-}
+  return await bcrypt.compare(inputPassword, this.password);
+};
 
 userModel.methods.generateResetPasswordToken = function () {
-  const resetToken = crypto.randomBytes(20).toString('hex')
+  const resetToken = crypto.randomBytes(20).toString('hex');
 
-  this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex')
-  this.resetTokenExpiresAt = Date.now() + 15 * 60 * 1000
+  this.resetPasswordToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+  this.resetTokenExpiresAt = Date.now() + 15 * 60 * 1000;
 
-  return resetToken
-}
+  return resetToken;
+};
 
-const User = mongoose.model('User', userModel)
-export default User
+const User = mongoose.model('User', userModel);
+export default User;

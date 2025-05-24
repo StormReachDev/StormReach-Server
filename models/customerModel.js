@@ -1,6 +1,6 @@
 // Imports:
-import mongoose from 'mongoose'
-import { modelConstants } from '../constants/models/index.js'
+import mongoose from 'mongoose';
+import { modelConstants } from '../constants/models/index.js';
 
 const customerModel = new mongoose.Schema(
   {
@@ -60,7 +60,7 @@ const customerModel = new mongoose.Schema(
   {
     timestamps: true,
   },
-)
+);
 
-const Customer = mongoose.model('Customer', customerModel)
-export default Customer
+const Customer = mongoose.model('Customer', customerModel);
+export default Customer;

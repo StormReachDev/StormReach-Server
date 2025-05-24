@@ -1,5 +1,5 @@
 // Imports:
-import { plans } from '../data/plans/index.js'
+import { plans } from '../data/plans/index.js';
 
 export const modelConstants = {
   user: {
@@ -12,7 +12,8 @@ export const modelConstants = {
 
       email: {
         required: 'The "email" field is required. Please provide a value.',
-        invalid: 'The provided email is invalid. Please provide a valid email address.',
+        invalid:
+          'The provided email is invalid. Please provide a valid email address.',
       },
 
       password: {
@@ -50,7 +51,8 @@ export const modelConstants = {
 
       companyName: {
         maxLength: 'The "companyName" field must not exceed 50 characters.',
-        minLength: 'The "companyName" field must be at least 3 characters long.',
+        minLength:
+          'The "companyName" field must be at least 3 characters long.',
       },
 
       plan: {
@@ -64,11 +66,13 @@ export const modelConstants = {
       },
 
       stripePriceId: {
-        required: 'The "stripePriceId" field is required. Please provide a value.',
+        required:
+          'The "stripePriceId" field is required. Please provide a value.',
       },
 
       stripeCustomerId: {
-        required: 'The "stripeCustomerId" field is required. Please provide a value.',
+        required:
+          'The "stripeCustomerId" field is required. Please provide a value.',
       },
     },
   },
@@ -80,7 +84,8 @@ export const modelConstants = {
       },
 
       billingAddress: {
-        required: 'The "billingAddress" field is required. Please provide a value.',
+        required:
+          'The "billingAddress" field is required. Please provide a value.',
         maxLength: 'The "billingAddress" field must not exceed 100 characters.',
       },
 
@@ -90,11 +95,13 @@ export const modelConstants = {
       },
 
       stripePaymentMethodId: {
-        required: 'The "stripePaymentMethodId" field is required. Please provide a value.',
+        required:
+          'The "stripePaymentMethodId" field is required. Please provide a value.',
       },
 
       stripePaymentIntentId: {
-        required: 'The "stripePaymentIntentId" field is required. Please provide a value.',
+        required:
+          'The "stripePaymentIntentId" field is required. Please provide a value.',
       },
     },
   },
@@ -111,12 +118,14 @@ export const modelConstants = {
       },
 
       transactionType: {
-        required: 'The "transactionType" field is required. Please provide a value.',
+        required:
+          'The "transactionType" field is required. Please provide a value.',
         enum: ['plan', 'refund'],
       },
 
       transactionStatus: {
-        required: 'The "transactionStatus" field is required. Please provide a value.',
+        required:
+          'The "transactionStatus" field is required. Please provide a value.',
         enum: ['succeeded', 'pending', 'failed', 'disputed'],
       },
 
@@ -134,4 +143,4 @@ export const modelConstants = {
       },
     },
   },
-}
+};
