@@ -1,3 +1,4 @@
+// Imports:
 import crypto from 'crypto';
 import getResetPasswordEmail from '../constants/templates/email/index.js';
 import asyncWrapper from '../middlewares/asyncWrapper.js';
@@ -91,7 +92,7 @@ export const forgotPassword = asyncWrapper(async function (req, res, next) {
   const resetPasswordToken = user.generateResetPasswordToken();
   await user.save({ validateBeforeSave: false });
 
-  const resetPasswordUrl = `${process.env.CLIENT_SIDE_URL}/reset-password/${resetPasswordToken}`;
+  const resetPasswordUrl = `${process.env.CLIENT_SIDE_URL}?screen=resetPassword&token=${resetPasswordToken}`;
 
   try {
     await emailService({
