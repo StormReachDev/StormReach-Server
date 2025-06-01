@@ -6,9 +6,9 @@ import asyncWrapper from './asyncWrapper.js';
 
 export const validateUserSession = asyncWrapper(
   async function (req, _res, next) {
-    const { token } = req.cookies;
+    const { authorization } = req.headers;
 
-    if (!token) {
+    if (!authorization || !authorization.startsWith('Bearer ')) {
       return next(
         new ErrorHandler(
           'Access denied. A valid login is required to proceed.',
@@ -16,11 +16,20 @@ export const validateUserSession = asyncWrapper(
         ),
       );
     }
+    const token = authorization.split(' ')[1];
 
-    const decodedData = jsonWebToken.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decodedData.id);
-
-    next();
+    try {
+      const decoded = jsonWebToken.verify(token, process.env.JWT_SECRET);
+      req.user = await User.findById(decoded.id).select('-password');
+      next();
+    } catch {
+      return next(
+        new ErrorHandler(
+          'Your session has expired or is invalid. Please login again to continue.',
+          401,
+        ),
+      );
+    }
   },
 );
 

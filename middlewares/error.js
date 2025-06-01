@@ -1,6 +1,5 @@
 // Imports:
 import ErrorHandler from '../utils/errorHandler.js';
-import logger from '../utils/logger.js';
 
 export default function globalErrorHandler(err, _req, res, _next) {
   err.statusCode = err.statusCode || 500;
@@ -25,8 +24,6 @@ export default function globalErrorHandler(err, _req, res, _next) {
     const message = `Json web token is expired! Please try again.`;
     err = new ErrorHandler(message, 400);
   }
-
-  logger('error', err.message); // Log the error message.
 
   res.status(err.statusCode).json({
     success: false,
