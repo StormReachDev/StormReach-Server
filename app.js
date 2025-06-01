@@ -27,8 +27,6 @@ app.use(
 );
 app.use(morgan('dev'));
 
-// TODO: Routes come here.
-
 // Uncomment to test the API key verification middleware:
 app.get('/', (_req, res) => {
   res.status(200).json({
