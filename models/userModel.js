@@ -68,6 +68,17 @@ const userModel = new mongoose.Schema(
       enum: modelConstants.user.error.role.enum,
     },
 
+    disputeFeeAmount: {
+      type: Number,
+      min: [0, modelConstants.user.error.disputeFeeAmount.min],
+    },
+
+    status: {
+      type: String,
+      enum: modelConstants.user.error.status.enum,
+      default: modelConstants.user.error.status.default,
+    },
+
     resetPasswordToken: String,
     resetTokenExpiresAt: Date,
 

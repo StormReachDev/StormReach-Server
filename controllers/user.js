@@ -62,18 +62,6 @@ export const signIn = asyncWrapper(async function (req, res, next) {
   return setAuthToken(user, 200, res);
 });
 
-export const signOut = asyncWrapper(async function (_req, res, _next) {
-  res.cookie('token', null, {
-    expires: new Date(Date.now()),
-    httpOnly: true,
-  });
-
-  res.status(200).json({
-    success: true,
-    message: 'You’ve successfully signed out.',
-  });
-});
-
 export const forgotPassword = asyncWrapper(async function (req, res, next) {
   const { email } = req.body;
 
@@ -222,7 +210,7 @@ export const changeUserPassword = asyncWrapper(async function (req, res, next) {
   user.password = newPassword;
   await user.save();
 
-  setAuthToken(user, 200, res);
+  return setAuthToken(user, 200, res);
 });
 
 export const updateUserProfile = asyncWrapper(async function (req, res, _next) {
@@ -232,6 +220,18 @@ export const updateUserProfile = asyncWrapper(async function (req, res, _next) {
     phone: req.body.phone,
     timeZone: req.body.timeZone,
   };
+
+  if (req.body.disputeFeeAmount !== undefined) {
+    if (req.user.role === 'admin') {
+      payload.disputeFeeAmount = req.body.disputeFeeAmount;
+    } else {
+      return res.status(403).json({
+        success: false,
+        message:
+          "You're not authorized to update the dispute fee amount. This action is restricted to administrators.",
+      });
+    }
+  }
 
   const user = await User.findByIdAndUpdate(req.user.id, payload, {
     new: true,

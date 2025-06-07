@@ -14,18 +14,18 @@ const app = express();
 const apiPrefix = process.env.API_PREFIX;
 
 // Middlewares:
-app.use(verifyApiKey);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(morgan('dev'));
 app.use(
   cors({
     credentials: true,
     origin: process.env.CLIENT_SIDE_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    optionsSuccessStatus: 200,
   }),
 );
-app.use(morgan('dev'));
 
 // Uncomment to test the API key verification middleware:
 app.get('/', (_req, res) => {
@@ -35,8 +35,8 @@ app.get('/', (_req, res) => {
   });
 });
 
-app.use(apiPrefix, userRoute);
-app.use(apiPrefix, customerRoute);
+app.use(apiPrefix, verifyApiKey, userRoute);
+app.use(apiPrefix, verifyApiKey, customerRoute);
 
 // Error handling middleware:
 app.use(globalErrorHandler);

@@ -40,6 +40,17 @@ export const modelConstants = {
           'The provided role is invalid. Please provide a valid role like "user" or "admin".',
         enum: ['roofer', 'admin', 'manager', 'salesAgent', 'telemarketer'],
       },
+
+      disputeFeeAmount: {
+        required:
+          'The "disputeFeeAmount" field is required. Please provide a value.',
+        min: 'The "disputeFeeAmount" field must be at least 0.',
+      },
+
+      status: {
+        enum: ['active', 'paused', 'flagged'],
+        default: 'active',
+      },
     },
   },
 
