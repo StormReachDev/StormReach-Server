@@ -7,7 +7,6 @@ import {
   getCurrentUser,
   resetPassword,
   signIn,
-  signOut,
   updateUserProfile,
 } from '../controllers/user.js';
 import {
@@ -26,7 +25,6 @@ router
     createUser,
   );
 router.route('/user/session').post(signIn);
-router.route('/user/invalidate-session').get(signOut);
 router.route('/user/forgot-password').post(forgotPassword);
 router.route('/user/reset-password/:token').put(resetPassword);
 router
