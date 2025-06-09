@@ -62,18 +62,6 @@ export const signIn = asyncWrapper(async function (req, res, next) {
   return setAuthToken(user, 200, res);
 });
 
-// export const signOut = asyncWrapper(async function (_req, res, _next) {
-//   res.cookie('token', null, {
-//     expires: new Date(Date.now()),
-//     httpOnly: true,
-//   });
-
-//   res.status(200).json({
-//     success: true,
-//     message: 'You’ve successfully signed out.',
-//   });
-// });
-
 export const forgotPassword = asyncWrapper(async function (req, res, next) {
   const { email } = req.body;
 
